@@ -1,0 +1,1 @@
+﻿1:此版本对springMVC+freemarker+js做了一个简单的测试用例

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/mvc
+	   http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd">                  
+ 
+    <!-- scan the package and the sub package -->
+    <context:component-scan base-package="test.SpringMVC" />
+    <!-- don't handle the static resource -->
+    <mvc:default-servlet-handler />
+ 
+    <!-- if you use annotation you must configure following setting -->
+    <mvc:annotation-driven />
+     
+    <!-- configure the InternalResourceViewResolver -->
+    <!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+            id="internalResourceViewResolver">
+        前缀
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        后缀
+        <property name="suffix" value=".jsp" />
+    </bean> -->
+     <!-- 针对freemarker的视图配置 -->  
+    <bean id="viewResolver"  
+        class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">  
+        <property name="cache" value="true" />  
+        <property name="prefix" value="/view/" />  
+        <property name="suffix" value=".html" />
+        <property name="contentType" value="text/html;charset=UTF-8"></property>  
+        <property name="requestContextAttribute" value="request" />  
+        <property name="exposeSpringMacroHelpers" value="true" />  
+        <property name="exposeRequestAttributes" value="true" />  
+        <property name="exposeSessionAttributes" value="true" />  
+    </bean>
+	 <!-- freemaker配置 -->
+    <bean id="freemarkerConfig"  
+        class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">  
+        <property name="templateLoaderPath" value="/WEB-INF" />  
+        <property name="freemarkerSettings">  
+            <props>  
+                <prop key="template_update_delay">0</prop>  
+                <prop key="default_encoding">UTF-8</prop>  
+                <prop key="number_format">0.##########</prop>  
+                <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>  
+                <prop key="classic_compatible">true</prop>  
+                <prop key="template_exception_handler">ignore</prop>  
+            </props>  
+        </property>  
+    </bean> 
+</beans>

@@ -1,0 +1,2 @@
+﻿1:--作为maven工程直接引入到eclipse中
+  ----本项目开发时采用了jetty，故可以直接在jetty容器中运行，部署时打成war包放到tomcat中运行
