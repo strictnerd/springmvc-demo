@@ -1,7 +1,11 @@
 package test.entity;
 
 import java.io.Serializable;
-
+/**
+ * 人员实体类
+ * @author clq
+ *
+ */
 public class Person implements Serializable {
 
 	/**
